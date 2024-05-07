@@ -1,14 +1,16 @@
-class TrieNode {
+export class TrieNode {
   char: string;
   endOfWord: boolean;
   children: TrieNode[];
-  constructor(char: string) {
+  word: string;
+  constructor(char: string, word: string) {
     this.char = char;
     this.endOfWord = false;
     this.children = new Array(26);
+    this.word = word;
   }
 }
-class Trie {
+export class Trie {
   children: TrieNode[];
   constructor() {
     this.children = new Array(26);
@@ -25,12 +27,15 @@ class Trie {
       const index: number = wordArr[idx].charCodeAt(0) - "a".charCodeAt(0);
       if (!curr) {
         if (!this.children[index]) {
-          this.children[index] = new TrieNode(wordArr[idx]);
+          this.children[index] = new TrieNode(wordArr[idx], wordArr[idx]);
         }
         curr = this.children[index];
       } else {
         if (!curr.children[index]) {
-          curr.children[index] = new TrieNode(wordArr[idx]);
+          curr.children[index] = new TrieNode(
+            wordArr[idx],
+            curr.word + wordArr[idx]
+          );
         }
         curr = curr.children[index];
       }
