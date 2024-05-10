@@ -1,3 +1,5 @@
+import { ListNode } from "./LC-237_DeleteNodeInALinkedList";
+
 function removeNodes(head: ListNode | null): ListNode | null {
   const stack: ListNode[] = [];
   let temp: ListNode | null = head;

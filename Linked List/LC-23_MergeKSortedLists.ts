@@ -1,3 +1,5 @@
+import { ListNode } from "./LC-237_DeleteNodeInALinkedList";
+
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
   let result: ListNode | null = null;
   const mergeTwoSortedLists = (
